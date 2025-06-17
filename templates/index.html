@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block title %} <title>Home</title> {% endblock %}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/style.css') }}">
+</head>
+	<body>
+		<header class="header">
+			<a href="{{ url_for('render_index') }}" class="logo">
+                <img src="./../static/images/Vertical sem assinatura colorida.png" alt="" class="logo__imagem">
+            </a>
+    {% block nav_list %}
+    <nav class="nav">
+            <ul class="nav__list">
+                <li class="nav__item">
+                    <a href="{{ url_for('render_index') }}" class="selected" class="nav__link">Home</a>
+                </li>
+                <li class="nav__item">
+                    <a href="{{ url_for('render_geradordecpf') }}" class="nav__link">Gerador de Cpf</a>
+                </li>
+                <li class="nav__item">
+                    <a href="{{ url_for('render_geradordesenha') }}" class="nav__link">Gerador de Senha</a>
+                </li>
+                <li class="nav__item">
+                    <a href="{{ url_for('render_validarcpf') }}" class="nav__link">Validador de Cpf</a>
+                </li>
+                <li class="nav__item">
+                    <a href="{{ url_for('render_conversordemoedas') }}"  class="nav__link">Conversor de moedas</a>
+                </li>
+            </ul>
+        </nav>
+        {% endblock%}
+			
+		</header>
+        {% block content %}
+        <article class="article">
+        <h1 class="h1">Sobre o projeto</h1>
+        <h4 class="h4">
+            Esta página faz parte do trabalho final da matéria "ALGORITMOS E ESTRUTURA DE DADOS I" 
+            proposto pelo Professor Marcelo Rego. A página foi criada usando o micro-framework "Flask" 
+            para formar a base e o Back-End, Jinja2 para criação de templates em HTML e CSS para estilização.
+        </h4>
+        <h4 class="h4">
+            Os alunos envolvidos na criação foram: Antony Reis, Igor Rocha e Guilherme Melo.
+        </h4>
+        </article>
+        {% endblock %}
+        <footer class="footer">
+        <div class="footer_content">
+            <p>UFVJM 2025</p>
+            <p>Desenvolvido por: Antony Reis, Igor Rocha e Guilherme Melo.</p>
+        </div>
+        </footer>
+
+	</body>
+    <script src="{{ url_for('static', filename='script/script.js') }}"></script>
+
+</html>

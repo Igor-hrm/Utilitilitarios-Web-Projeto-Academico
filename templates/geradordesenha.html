@@ -1,0 +1,48 @@
+{% extends "index.html" %}
+
+{% block title %} <title>Gerador de senha</title> {% endblock %}
+
+{% block nav_list %}
+    <nav class="nav">
+            <ul class="nav__list">
+                <li class="nav__item">
+                    
+                    <a href="{{ url_for('render_index') }}" class="nav__link">Home</a>
+                </li>
+                <li class="nav__item">
+                    <a href="{{ url_for('render_geradordecpf') }}" class="nav__link">Gerador de Cpf</a>
+                </li>
+                <li class="nav__item">
+                    <a href="{{ url_for('render_geradordesenha') }}" class="selected" class="nav__link">Gerador de Senha</a>
+                </li>
+                <li class="nav__item">
+                    <a href="{{ url_for('render_validarcpf') }}" class="nav__link">Validador de Cpf</a>
+                </li>
+                <li class="nav__item">
+                    <a href="{{ url_for('render_conversordemoedas') }}"  class="nav__link">Conversor de moedas</a>
+                </li>
+            </ul>
+        </nav>
+{% endblock%}
+
+{% block content %}
+<article class="article">
+<h1>Gerador de senha</h1>
+
+<form class="form" method="POST" action="/gerarsenha">
+    <p  class="text-output" id="senha">{{ senha or '' }}</p><br>
+    <span class="checkboxs">
+    Maiusculas  <input class="checkbox" type="checkbox" value="1" name="checkbox"  {% if '1' in selecionados %}checked{% endif %}>
+    Minusculas  <input class="checkbox" type="checkbox" value="2" name="checkbox"  {% if '2' in selecionados %}checked{% endif %}>
+    Números  <input class="checkbox" type="checkbox" value="3" name="checkbox"  {% if '3' in selecionados %}checked{% endif %}>
+    Especiais  <input class="checkbox" type="checkbox" value="4" name="checkbox"  {% if '4' in selecionados %}checked{% endif %}>
+    </span><br>
+
+    <span class="slider-container">Quantidade de caracteres:<span id="sliderValue"></span><span class="slider"><input id="slider" type="range" value="{{ tamanho_senha or 25}}" min="1" max="50" step="1" name="slide" id="slider"></span> </span>
+    <div class="botoes-container">
+  <input class="submit" type="submit" value="Gerar">
+  <button type="button" id="copiarBtn-Senha" class="submit">Copiar</button>
+</div>
+</form>
+</article>
+{% endblock %}

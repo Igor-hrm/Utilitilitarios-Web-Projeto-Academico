@@ -1,0 +1,50 @@
+{% extends "index.html" %}
+
+{% block title %} <title>Validador de CPF</title> {% endblock %}
+
+{% block nav_list %}
+    <nav class="nav">
+            <ul class="nav__list">
+                <li class="nav__item">
+                    
+                    <a href="{{ url_for('render_index') }}" class="nav__link">Home</a>
+                </li>
+                <li class="nav__item">
+                    <a href="{{ url_for('render_geradordecpf') }}" class="nav__link">Gerador de Cpf</a>
+                </li>
+                <li class="nav__item">
+                    <a href="{{ url_for('render_geradordesenha') }}" class="nav__link">Gerador de Senha</a>
+                </li>
+                <li class="nav__item">
+                    <a href="{{ url_for('render_validarcpf') }}" class="selected" class="nav__link">Validador de Cpf</a>
+                </li>
+                <li class="nav__item">
+                    <a href="{{ url_for('render_conversordemoedas') }}"  class="nav__link">Conversor de moedas</a>
+                </li>
+            </ul>
+        </nav>
+{% endblock%}
+
+{% block content %}
+<article class="article">
+<h1>Validador de CPF</h1>
+<form class="form" method="POST" action="/validarcpf"> 
+    <span class="cpf-input">
+
+    CPF:
+    <input class="text-output" type="text" id="validarcpf" name="validarcpf" placeholder="Insira um CPF">                
+    </span>
+<br>
+<br>
+    <p class="{% if 'inválido' in cpfvalido %} invalido
+    {% else %} valido
+    {% endif %}">
+    {{ cpfvalido or '' }}</p>
+
+    <div class="botoes-container">
+    <input class="submit" type="submit" value="Validar">
+    </div>
+</form>
+</article>
+{% endblock %}
+

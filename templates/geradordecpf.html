@@ -1,0 +1,45 @@
+{% extends "index.html" %}
+
+{% block title %} <title>Gerador de CPF</title> {% endblock %}
+
+{% block nav_list %}
+    <nav class="nav">
+            <ul class="nav__list">
+                <li class="nav__item">
+                    
+                    <a href="{{ url_for('render_index') }}" class="nav__link">Home</a>
+                </li>
+                <li class="nav__item">
+                    <a href="{{ url_for('render_geradordecpf') }}" class="selected" class="nav__link">Gerador de Cpf</a>
+                </li>
+                <li class="nav__item">
+                    <a href="{{ url_for('render_geradordesenha') }}" class="nav__link">Gerador de Senha</a>
+                </li>
+                <li class="nav__item">
+                    <a href="{{ url_for('render_validarcpf') }}" class="nav__link">Validador de Cpf</a>
+                </li>
+                <li class="nav__item">
+                    <a href="{{ url_for('render_conversordemoedas') }}"  class="nav__link">Conversor de moedas</a>
+                </li>
+            </ul>
+        </nav>
+{% endblock%}
+
+{% block content %}
+    <article class="article">
+        <h1>Gerador de CPF</h1>
+    <form class="form" action="/gerarcpf" method="POST">
+    <p id="cpf" class="text-output"> {{ cpf_str or '' }} </p><br>
+
+    <span class="checkboxs-cpf">Com formatação?   
+        <input class="checkbox" type="checkbox" name="checkbox" value="1" {% if '1' == formatado %}checked{% endif %}>
+    </span>
+    <div class="botoes-container">
+        <input type="submit" value="Gerar" class="submit">
+    <button type="button" class="submit" id="copiarBtn-CPF">Copiar</button>
+    </div>
+    </form>
+    </article>
+{% endblock %}
+
+
